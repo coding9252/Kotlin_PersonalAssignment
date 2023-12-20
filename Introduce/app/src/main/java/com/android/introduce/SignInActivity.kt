@@ -30,9 +30,9 @@ class SignInActivity : AppCompatActivity() {
                 return@setOnClickListener    // else 안 쓴 경우에 setOnClickListener를 빠져나가기(else 부분을 실행하면 안되기 때문에)
             } else if (et_pw.text.toString().trim().isEmpty()) {
                 Toast.makeText(this, getString(R.string.toast_msg_pwErr), Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener    // else 안 쓴 경우에 setOnClickListener를 빠져나가기(else 부분을 실행하면 안되기 때문에)
-            } else
-                Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener    // else 안 쓴 경우에 setOnClickListener를 빠져나가기(else 부분을 실행하면 안되기 때문에)
+            }
+            Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
 
             val strData = et_id.text.toString()
             val intent = Intent(this, HomeActivity::class.java)
@@ -52,7 +52,6 @@ class SignInActivity : AppCompatActivity() {
 //                    Toast.makeText(this, getString(R.string.toast_msg_pwErr), Toast.LENGTH_SHORT).show()
 //                }
 //
-//
 //                else -> {
 //                    Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
 //
@@ -60,9 +59,8 @@ class SignInActivity : AppCompatActivity() {
 //                    val intent = Intent(this, HomeActivity::class.java)
 //                    intent.putExtra("dataFromSignInActivity", strData)
 //                    startActivity(intent)
-//
-//
 //                }
+
         }
         btn_signUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
