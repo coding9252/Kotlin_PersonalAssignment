@@ -12,18 +12,24 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        val signUp_Btn = findViewById<Button>(R.id.btn_signUp2)
-        val edit_name = findViewById<EditText>(R.id.edit_name)
-        val edit_id2 = findViewById<EditText>(R.id.edit_id2)
-        val edit_password2 = findViewById<EditText>(R.id.edit_password2)
+        val et_name = findViewById<EditText>(R.id.et_name)
+        val et_id = findViewById<EditText>(R.id.et_id)
+        val et_pw = findViewById<EditText>(R.id.et_pw)
+        val btn_signUp = findViewById<Button>(R.id.btn_signUpOk)
 
-        signUp_Btn.setOnClickListener {
-            if (edit_name.length() == 0 || edit_id2.length() == 0 || edit_password2.length() == 0) {
+        btn_signUp.setOnClickListener {
+            if (et_name.text.toString().trim().isEmpty() || et_id.text.toString().trim().isEmpty() || et_pw.text.toString().trim().isEmpty()) {
                 Toast.makeText(this, "입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
-            } else {
-                val intent = Intent(this, SignInActivity::class.java)
-                finish()
+                return@setOnClickListener
             }
+
+            val intent = Intent(this, SignInActivity::class.java).apply {
+                putExtra("id", et_id.text.toString())
+                putExtra("pw", et_pw.text.toString())
+            }
+            setResult(RESULT_OK, intent)    // 한 번 더 확인하는 것. RESULT_OK 말고 다른 값을 줘도 된다.
+
+            if (!isFinishing) finish()
         }
     }
 }
