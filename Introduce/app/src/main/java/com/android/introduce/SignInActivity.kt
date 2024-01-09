@@ -48,7 +48,7 @@ class SignInActivity : AppCompatActivity() {
             intent.putExtra(
                 "id",
                 et_id.text.toString()
-            )                   // putExtra로 아이디 넘(키값, 내용)
+            )                   // putExtra로 아이디 넘김(키값, 내용)
             startActivity(intent)
 
 

@@ -16,6 +16,7 @@ class SignUpActivity : AppCompatActivity() {
         val et_id = findViewById<EditText>(R.id.et_id)
         val et_pw = findViewById<EditText>(R.id.et_pw)
         val btn_signUp = findViewById<Button>(R.id.btn_signUpOk)
+        val btn = findViewById<Button>(R.id.btn_signUpOk)
 
         btn_signUp.setOnClickListener {
             if (et_name.text.toString().trim().isEmpty() || et_id.text.toString().trim().isEmpty() || et_pw.text.toString().trim().isEmpty()) {
