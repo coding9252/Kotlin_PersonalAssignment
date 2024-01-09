@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AppleMarket</string>
+    <string name="nbcDong">내배캠동</string>
+    <string name="nameItem">상품명</string>
+    <string name="addressItem">주소</string>
+    <string name="priceItem">가격</string>
+    <string name="count">00</string>
 </resources>
