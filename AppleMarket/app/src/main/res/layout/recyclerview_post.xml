@@ -95,22 +95,22 @@
             android:layout_marginEnd="5dp"
             android:hint="@string/count"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_heart"
-            app:layout_constraintEnd_toStartOf="@+id/iv_heart"
-            app:layout_constraintTop_toTopOf="@+id/iv_heart" />
+            app:layout_constraintBottom_toBottomOf="@+id/rv_iv_like"
+            app:layout_constraintEnd_toStartOf="@+id/rv_iv_like"
+            app:layout_constraintTop_toTopOf="@+id/rv_iv_like" />
 
         <ImageView
-            android:id="@+id/iv_heart"
+            android:id="@+id/rv_iv_like"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_heart"
-            app:layout_constraintTop_toTopOf="@+id/tv_heart"
-            app:srcCompat="@drawable/heart" />
+            app:layout_constraintEnd_toStartOf="@+id/tv_like"
+            app:layout_constraintTop_toTopOf="@+id/tv_like"
+            app:srcCompat="@drawable/like" />
 
         <TextView
-            android:id="@+id/tv_heart"
+            android:id="@+id/tv_like"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="105dp"
