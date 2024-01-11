@@ -1,8 +1,5 @@
 package com.android.applemarket
 
-import android.annotation.SuppressLint
-import android.content.res.Resources
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

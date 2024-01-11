@@ -278,7 +278,7 @@ class MainActivity : AppCompatActivity() {
 
         // 알림의 기본 정보
         builder.run {
-            setSmallIcon(R.mipmap.ic_launcher)
+            setSmallIcon(R.drawable.apple)
             setWhen(System.currentTimeMillis())
             setContentTitle("키워드 알림")
             setContentText("설정한 키워드에 대한 알림이 도착했습니다!!")
