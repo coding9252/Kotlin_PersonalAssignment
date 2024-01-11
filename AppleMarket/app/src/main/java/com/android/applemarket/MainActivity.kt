@@ -243,14 +243,14 @@ class MainActivity : AppCompatActivity() {
     // 알림
     private val channelID = "default"
 
-    fun notification(){
+    fun notification() {
         val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         val builder: NotificationCompat.Builder
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            // 26 버전 이상(8.0 이상인지 체크)
-            val channelId="one-channel"
-            val channelName="My Channel One"
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // 26 버전 이상(8.0 이상인지 체크), 에뮬레이터에서 알림 권한 켜야 함.
+            val channelId = "one-channel"
+            val channelName = "My Channel One"
             val channel = NotificationChannel(
                 channelId,
                 channelName,
@@ -271,13 +271,13 @@ class MainActivity : AppCompatActivity() {
             // 채널을 이용하여 builder 생성
             builder = NotificationCompat.Builder(this, channelId)
 
-        }else {
+        } else {
             // 26 버전 이하
             builder = NotificationCompat.Builder(this)
         }
 
         // 알림의 기본 정보
-                builder.run {
+        builder.run {
             setSmallIcon(R.mipmap.ic_launcher)
             setWhen(System.currentTimeMillis())
             setContentTitle("키워드 알림")
