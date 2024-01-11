@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.android.applemarket.databinding.ActivityDetailBinding
 import com.android.applemarket.databinding.ActivityMainBinding
+import java.text.DecimalFormat
 
 class DetailActivity : AppCompatActivity() {
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        val decimal = DecimalFormat("#,###")
 
         val getData = intent.getParcelableExtra<Post>("data")
         getData?.let{
@@ -21,6 +24,7 @@ class DetailActivity : AppCompatActivity() {
             binding.ivIcon.setImageResource(it.mannerImage)
             binding.tvName.text = it.itemName
             binding.tvDescription.text = it.description
+            binding.tvPrice.text = decimal.format(it.itemPrice) + "원"
         }
 
         // 텍스트에 밑줄 긋기

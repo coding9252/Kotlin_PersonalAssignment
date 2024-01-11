@@ -1,5 +1,8 @@
 package com.android.applemarket
 
+import android.annotation.SuppressLint
+import android.content.res.Resources
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +16,7 @@ class Adapter(val postList: MutableList<Post>) : RecyclerView.Adapter<Adapter.My
         fun onClick(view: View, position: Int)
     }
 
-    var itemClick : ItemClick? = null
+    var itemClick: ItemClick? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter.MyViewHolder {
         val productView =
@@ -21,6 +24,7 @@ class Adapter(val postList: MutableList<Post>) : RecyclerView.Adapter<Adapter.My
         // Log.d("Adapter", "onCreateViewHolder()")
         return MyViewHolder(productView)
     }
+
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // Log.d("Adapter", "onBindViewHolder()  position = $position")

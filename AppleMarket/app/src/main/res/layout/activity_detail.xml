@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:hint="닉네임"
+                android:hint="@string/nickname"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/iv_account"
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:hint="주소"
+                android:hint="@string/addressItem"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_account"
                 app:layout_constraintStart_toEndOf="@+id/iv_account" />
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:hint="온도"
+                android:hint="@string/temperature"
                 android:textSize="20sp"
                 android:textColor="#08887D"
                 android:textStyle="bold"
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
-                android:text="매너온도"
+                android:text="@string/manner"
                 android:layout_marginTop="5dp"
                 android:textColor="#66000000"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -111,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="15dp"
-                android:hint="상품명"
-                android:textSize="25dp"
+                android:hint="@string/nameItem"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,8 +124,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginHorizontal="15dp"
-                android:hint="상품 설명"
-                android:textSize="20dp"
+                android:hint="@string/description"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_name" />
@@ -152,12 +152,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/white"
-        android:paddingVertical="10dp">
+        android:paddingVertical="20dp">
 
         <ImageView
             android:id="@+id/iv_like"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
             android:layout_marginStart="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -175,32 +175,32 @@
             app:layout_constraintTop_toTopOf="@+id/iv_like" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tv_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:hint="상품 가격"
-            android:textSize="25dp"
+            android:hint="@string/priceItem"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/view2"
             app:layout_constraintStart_toEndOf="@+id/view2"
             app:layout_constraintTop_toTopOf="@+id/view2" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/tv_chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape"
             android:paddingVertical="5dp"
             android:paddingHorizontal="20dp"
-            android:text="채팅하기"
+            android:text="@string/chat"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_marginEnd="15dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView5" />
+            app:layout_constraintTop_toTopOf="@+id/tv_price" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

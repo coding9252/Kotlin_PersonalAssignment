@@ -3,6 +3,12 @@
     <string name="nbcDong">내배캠동</string>
     <string name="nameItem">상품명</string>
     <string name="addressItem">주소</string>
-    <string name="priceItem">가격</string>
+    <string name="priceItem">상품 가격</string>
     <string name="count">00</string>
+    <string name="nickname">닉네임</string>
+    <string name="temperature">온도</string>
+    <string name="manner">매너온도</string>
+    <string name="description">상품 설명</string>
+    <string name="chat">채팅하기</string>
+    <string name="won">원</string>
 </resources>
