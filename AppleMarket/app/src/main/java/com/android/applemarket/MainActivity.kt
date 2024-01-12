@@ -25,6 +25,7 @@ import java.security.PrivateKey
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -199,8 +200,9 @@ class MainActivity : AppCompatActivity() {
             override fun onClick(view: View, position: Int) {
                 val data = dataList[position]
                 val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                intent.putExtra("data", data)
-                startActivity(intent)
+                intent.putExtra(Constants.Data, data)
+                activityResultLauncher.launch(intent)
+//                startActivity(intent)
             }
         }
     }
