@@ -62,14 +62,19 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fb_up"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:visibility="invisible"
+        android:elevation="0dp"
+        app:tint="@null"
+        app:maxImageSize="40dp"
+        app:fabCustomSize="30dp"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/up" />
+        app:srcCompat="@drawable/floating" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

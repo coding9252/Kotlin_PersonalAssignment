@@ -1,5 +1,6 @@
 package com.android.applemarket
 
 object Constants {
-    const val Data = "data"
+    const val Item = "item"
+    const val index = "index"
 }

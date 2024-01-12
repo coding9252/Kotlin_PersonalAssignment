@@ -10,9 +10,10 @@ data class SaleItem(
     val itemLocation: String,
     val itemPrice: Int,
     val itemComment: Int,
-    val itemLike: Int,
+    var likeCount: Int,
     val nickName: String,
     val mannerImage: Int,
     val temperature: String,
-    val description: String
+    val description: String,
+    var isLike: Boolean
 ) : Parcelable
