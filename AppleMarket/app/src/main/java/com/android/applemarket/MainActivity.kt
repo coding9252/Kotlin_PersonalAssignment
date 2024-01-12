@@ -378,15 +378,4 @@ class MainActivity : AppCompatActivity() {
         }
         manager.notify(11, builder.build())   // 알림이 여러개 있을 시 필요한 고유 id 필요.
     }
-
-    fun floatButton(view: RecyclerView?) {
-        val fadeIn = AlphaAnimation(0f, 1f).apply { duration = 500 }
-        val fadeOut = AlphaAnimation(1f, 0f).apply { duration = 500 }
-        var isTop = true
-
-
-//        binding.fbUp.setOnClickListener {
-//            view?.smoothScrollToPosition(0)
-//        }
-    }
 }
