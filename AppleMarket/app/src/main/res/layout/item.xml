@@ -65,7 +65,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -74,7 +74,7 @@
             android:id="@+id/iv_comment"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="3dp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_comment"
             app:layout_constraintEnd_toStartOf="@+id/tv_comment"
             app:layout_constraintTop_toTopOf="@+id/tv_comment"
@@ -95,7 +95,7 @@
             android:id="@+id/rv_iv_like"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_like"
             app:layout_constraintTop_toTopOf="@+id/tv_like"
@@ -105,12 +105,10 @@
             android:id="@+id/tv_like"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="105dp"
             android:hint="@string/count"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

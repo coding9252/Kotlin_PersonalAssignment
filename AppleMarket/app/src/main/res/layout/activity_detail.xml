@@ -152,27 +152,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/white"
-        android:paddingVertical="20dp">
+        android:paddingVertical="10dp">
 
-        <ImageView
-            android:id="@+id/iv_like"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginStart="15dp"
+        <LinearLayout
+            android:id="@+id/ll_detailLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/like" />
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/iv_detailLike"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/like" />
+        </LinearLayout>
 
         <View
             android:id="@+id/view2"
             android:layout_width="2dp"
             android:layout_height="40dp"
-            android:layout_marginStart="20dp"
             android:background="@color/lightgrey"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_like"
-            app:layout_constraintStart_toEndOf="@+id/iv_like"
-            app:layout_constraintTop_toTopOf="@+id/iv_like" />
+            app:layout_constraintBottom_toBottomOf="@+id/ll_detailLike"
+            app:layout_constraintStart_toEndOf="@+id/ll_detailLike"
+            app:layout_constraintTop_toTopOf="@+id/ll_detailLike" />
 
         <TextView
             android:id="@+id/tv_price"

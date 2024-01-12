@@ -2,7 +2,6 @@ package com.android.applemarket
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.media.AudioAttributes
@@ -12,18 +11,21 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AlphaAnimation
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout.LayoutParams.VERTICAL
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.applemarket.Adapter
+import androidx.recyclerview.widget.RecyclerView
 import com.android.applemarket.databinding.ActivityMainBinding
+import java.security.PrivateKey
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -34,9 +36,9 @@ class MainActivity : AppCompatActivity() {
             notification()
         }
 
-        val postList = mutableListOf<Post>()
-        postList.add(
-            Post(
+        val dataList = mutableListOf<SaleItem>()
+        dataList.add(
+            SaleItem(
                 R.drawable.sample1,
                 "산진 한달된 선풍기 팝니다",
                 "서울 서대문구 창천동",
@@ -50,8 +52,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        postList.add(
-            Post(
+        dataList.add(
+            SaleItem(
                 R.drawable.sample2,
                 "김치냉장고",
                 "인천 계양구 귤현동",
@@ -65,8 +67,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        postList.add(
-            Post(
+        dataList.add(
+            SaleItem(
                 R.drawable.sample3,
                 "샤넬 카드지갑",
                 "수성구 범어동",
@@ -80,8 +82,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        postList.add(
-            Post(
+        dataList.add(
+            SaleItem(
                 R.drawable.sample4,
                 "금고",
                 "해운대구 우제2동",
@@ -95,8 +97,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        postList.add(
-            Post(
+        dataList.add(
+            SaleItem(
                 R.drawable.sample5,
                 "갤럭시Z플립3 팝니다",
                 "연제구 연산제8동",
@@ -110,8 +112,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        postList.add(
-            Post(
+        dataList.add(
+            SaleItem(
                 R.drawable.sample6,
                 "프라다 복조리백",
                 "수원시 영통구 원천동",
@@ -125,8 +127,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        postList.add(
-            Post(
+        dataList.add(
+            SaleItem(
                 R.drawable.sample7,
                 "울산 동해오션뷰 60평 복층 펜트하우스 1일 숙박권 펜션 힐링 숙소 별장",
                 "남구 옥동",
@@ -140,8 +142,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        postList.add(
-            Post(
+        dataList.add(
+            SaleItem(
                 R.drawable.sample8,
                 "샤넬 탑핸들 가방",
                 "동래구 온천제2동",
@@ -155,8 +157,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        postList.add(
-            Post(
+        dataList.add(
+            SaleItem(
                 R.drawable.sample9,
                 "4행정 엔진분무기 판매합니다.",
                 "원주시 명륜2동",
@@ -169,8 +171,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        postList.add(
-            Post(
+        dataList.add(
+            SaleItem(
                 R.drawable.sample10,
                 "셀린느 버킷 가방",
                 "중구 동화동",
@@ -180,12 +182,12 @@ class MainActivity : AppCompatActivity() {
                 "똑태현",
                 R.drawable.lv6,
                 "87.1°C",
-                "22년 신세계 대전 구매입니당\n + \"셀린느 버킷백\\n\" + \"구매해서 몇번사용했어요\\n\" + \"까짐 스크래치 없습니다.\\n\" + \"타지역에서 보내는거라 택배로 진행합니당!\""
+                "22년 신세계 대전 구매입니당\n 셀린느 버킷백\n 구매해서 몇번사용했어요\n 까짐 스크래치 없습니다.\n 타지역에서 보내는거라 택배로 진행합니당!"
             )
         )
 
-        val adapter = Adapter(postList)
-        binding.recyclerView.adapter = adapter
+        val adapter = Adapter(dataList)
+        binding.recyclerView.adapter = adapter  // 변수 adapter를 recyclerView의 adapter에 넣음
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
         // 리사이클러뷰에 회색 줄 추가
@@ -195,7 +197,7 @@ class MainActivity : AppCompatActivity() {
         // 상품 선택시 아래 상품 상세 페이지로 이동(이동시 Parcelize 사용하여 intent로 객체를 전달)
         adapter.itemClick = object : Adapter.ItemClick {
             override fun onClick(view: View, position: Int) {
-                val data = postList[position]
+                val data = dataList[position]
                 val intent = Intent(this@MainActivity, DetailActivity::class.java)
                 intent.putExtra("data", data)
                 startActivity(intent)
@@ -227,6 +229,24 @@ class MainActivity : AppCompatActivity() {
             builder.setNegativeButton("취소", null)
 
             builder.show()
+        }
+    }
+
+//    override fun onBackPressed() {
+//        val ad = AlertDialog.Builder(this)
+//        ad.setIcon(R.drawable.comment)
+//        ad.setTitle("종료")
+//        ad.setMessage("정말 종료하시겠습니까?")
+//
+//        ad.setPositiveButton("확인") { dialog, _ ->
+//            finish()
+//        }
+//        ad.setNegativeButton("취소"){ dialog,_ ->
+//            dialog.dismiss()
+//        }
+//        ad.show()
+//    }
+
 
 //    override fun onBackPressed() {
 //        AlertDialog.Builder(this).apply {
@@ -237,12 +257,8 @@ class MainActivity : AppCompatActivity() {
 //            setPositiveButton("확인") { _, _ -> super.onBackPressed() }
 //            show()
 
-        }
-    }
 
     // 알림
-    private val channelID = "default"
-
     fun notification() {
         val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
@@ -264,6 +280,7 @@ class MainActivity : AppCompatActivity() {
                     .setUsage(AudioAttributes.USAGE_ALARM)
                     .build()
                 setSound(uri, audioAttributes)
+                enableVibration(true)
             }
             // 채널을 NotificationManager에 등록
             manager.createNotificationChannel(channel)
@@ -284,5 +301,16 @@ class MainActivity : AppCompatActivity() {
             setContentText("설정한 키워드에 대한 알림이 도착했습니다!!")
         }
         manager.notify(11, builder.build())   // 알림이 여러개 있을 시 필요한 고유 id 필요.
+    }
+
+    fun floatButton(view: RecyclerView?) {
+        val fadeIn = AlphaAnimation(0f, 1f).apply { duration = 500 }
+        val fadeOut = AlphaAnimation(1f, 0f).apply { duration = 500 }
+        var isTop = true
+
+
+//        binding.fbUp.setOnClickListener {
+//            view?.smoothScrollToPosition(0)
+//        }
     }
 }

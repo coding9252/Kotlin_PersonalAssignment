@@ -1,10 +1,8 @@
 package com.android.applemarket
 
-import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.android.applemarket.databinding.ActivityDetailBinding
-import com.android.applemarket.databinding.ActivityMainBinding
 import java.text.DecimalFormat
 
 class DetailActivity : AppCompatActivity() {
@@ -15,7 +13,7 @@ class DetailActivity : AppCompatActivity() {
 
         val decimal = DecimalFormat("#,###")
 
-        val getData = intent.getParcelableExtra<Post>("data")
+        val getData = intent.getParcelableExtra<SaleItem>("data")
         getData?.let{
             binding.ivPhoto.setImageResource(it.itemPhoto)
             binding.tvNickname.text = it.nickName
@@ -27,8 +25,7 @@ class DetailActivity : AppCompatActivity() {
             binding.tvPrice.text = decimal.format(it.itemPrice) + "원"
         }
 
-        // 텍스트에 밑줄 긋기
-        binding.tvManner.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        // binding.tvManner.paintFlags = Paint.UNDERLINE_TEXT_FLAG    // 텍스트에 밑줄
 
         binding.ivBack.setOnClickListener {
             finish()

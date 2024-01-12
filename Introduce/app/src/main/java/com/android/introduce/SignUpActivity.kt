@@ -21,7 +21,7 @@ class SignUpActivity : AppCompatActivity() {
         btn_signUp.setOnClickListener {
             if (et_name.text.toString().trim().isEmpty() || et_id.text.toString().trim().isEmpty() || et_pw.text.toString().trim().isEmpty()) {
                 Toast.makeText(this, "입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+                return@setOnClickListener  // 뒷부분이 실행되지 않게 하기 위해 return해줌.
             }
 
             val intent = Intent(this, SignInActivity::class.java).apply {
