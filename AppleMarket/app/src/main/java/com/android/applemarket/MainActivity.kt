@@ -214,7 +214,6 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra(Constants.Item, data)
                 intent.putExtra(Constants.index,position)
                 activityResultLauncher.launch(intent)
-//                startActivity(intent)
             }
         }
 

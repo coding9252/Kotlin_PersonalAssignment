@@ -69,6 +69,4 @@ class Adapter(val saleItemList: MutableList<SaleItem>) : RecyclerView.Adapter<Ad
         val like = binding.tvLike
         val likeIcon = binding.ivLikeCount
     }
-
-
 }
